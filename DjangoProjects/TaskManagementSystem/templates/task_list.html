@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    All Tasks
+{% endblock %}
+
+{% block content %}
+<a class="btn btn-primary mx-5 my-4" href="{% url 'task_create' %}">Create Task</a>
+<div class="container row gap-4" style="margin-left: 1rem;">
+    {% for task in tasks %}
+    <div class="card">
+        <div class="card-body">
+            <h3 class="card-title">{{ task.title }}</h3>
+            <p class="card-text">{{ task.description }}</p>
+            <h3 class="card-text">{{ task.status }}</h3>
+            <h3 class="card-text">{{ task.due_date }}</h3>
+            <p class="card-text"><strong>Assigned to:</strong> {{ task.user.username }}</p>
+            <a href="{% url 'task_edit' task.id %}" class="btn btn-primary">Edit</a>
+            <a href="{% url 'task_delete' task.id %}" class="btn btn-danger">Delete</a>
+
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock %}

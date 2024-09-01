@@ -1,0 +1,14 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Confirm Delete
+{% endblock %}
+
+{% block content %}
+<h1 class="text-center">Are you sure? You want to delete this task?</h1>
+<form method="POST">
+    {% csrf_token %}
+    <button class="btn btn-danger" style="margin-left: 2rem;">Delete</button>
+    <a class="btn btn-success" href="{% url 'task_list' %}">Cancel</a>
+</form>
+{% endblock %}
